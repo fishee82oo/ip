@@ -1,11 +1,7 @@
 import java.util.Scanner;
 public class Fish {
     public static void main(String[] args) {
-        String logo =
-                "      __><(((º>    \n" +
-                        "     /             \n" +
-                        "~~~<'               \n" +
-                        "     \\__           \n";
+        String logo = "      __><(((º>    \n";
         System.out.println("Hello from\n" + logo);
 
         Scanner sc = new Scanner(System.in);
