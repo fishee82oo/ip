@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Fish {
     public static void main(String[] args) {
         String logo =
@@ -6,6 +7,22 @@ public class Fish {
                         "~~~<'               \n" +
                         "     \\__           \n";
         System.out.println("Hello from\n" + logo);
+
+        Scanner sc = new Scanner(System.in);
+
+        // keep reading input until "bye"
+        while (true) {
+            String input = sc.nextLine();
+
+            if (input.equals("bye")) {
+                exit();
+                break;
+            }
+
+            System.out.println(input);
+        }
+
+        sc.close();
     }
 
     public static void greet () {
