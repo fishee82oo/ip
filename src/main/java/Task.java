@@ -1,4 +1,4 @@
-public class Task {
+public abstract class Task {
     protected String description;
     protected boolean isDone;
 
@@ -35,7 +35,13 @@ public class Task {
         this.description = description;
     }
 
+    public abstract String getType() ;
+
     public String toString () {
         return "[" + getStatusIcon() + "] " + description;
+    }
+
+    public String toFileString() {
+        return String.join(" | ", getType(), isDone ? "1" : "0", description);
     }
 }
