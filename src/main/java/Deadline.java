@@ -1,10 +1,14 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
 public class Deadline extends Task {
 
-    protected String by;
+    protected LocalDate d1;
 
     public Deadline(String description, String by) {
         super(description);
-        this.by = by;
+        this.d1 = LocalDate.parse(by);
     }
 
     @Override
@@ -14,10 +18,11 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + by + ")";
+        String d2 = d1.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+        return "[D]" + super.toString() + " (by: " + d2 + ")";
     }
 
     @Override public String toFileString() {
-        return String.join(" | ", "D", isDone ? "1" : "0", description, by);
+        return String.join(" | ", "D", isDone ? "1" : "0", description, this.d1.format(DateTimeFormatter.ofPattern("MMM d yyyy")));
     }
 }

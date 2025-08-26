@@ -1,3 +1,4 @@
 T | 0 | 2103
-D | 1 | french essay | Sunday
-E | 0 | js game night | 6pm | 715 pm
+D | 1 | french essay | 10月 15 2019
+E | 0 | js game night | 2025-08-27 1800 | 2025-08-27 1915
+E | 0 | idk | 2025-08-25 1900 | 2025-08-25 2000

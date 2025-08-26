@@ -1,12 +1,16 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class Event extends Task {
 
-    protected String from;
-    protected String to;
+    protected LocalDateTime from;
+    protected LocalDateTime to;
 
     public Event (String description, String from, String to) {
         super(description);
-        this.from = from;
-        this.to = to;
+        this.from = LocalDateTime.parse(from, DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
+        this.to = LocalDateTime.parse(to, DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
 
     }
 
@@ -22,6 +26,8 @@ public class Event extends Task {
 
     @Override
     public String toFileString() {
-        return String.join(" | ", "E", isDone ? "1" : "0", description, from, to);
+        return String.join(" | ", "E", isDone ? "1" : "0", description,
+                this.from.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")),
+                this.to.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")));
     }
 }
