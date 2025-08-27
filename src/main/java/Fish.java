@@ -1,10 +1,48 @@
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Fish {
+
+    private Storage storage;
+    private TaskList tasks;
+    private Ui ui;
+
+    public Fish (String filePath) {
+        ui = new Ui();
+        storage = new Storage(filePath);
+        try {
+            tasks = new TaskList(storage.load());
+        } catch (IOException e) {
+            ui.showLoadingError();
+            tasks = new TaskList();
+        }
+    }
+
+    public void run() {
+        ui.showWelcome();
+        boolean isExit = false;
+        while (!isExit) {
+            try {
+                String fullCommand = ui.readCommand();
+                ui.showLine();
+                Command c = Parser.parse(fullCommand);
+                c.execute(tasks, ui, storage);
+                isExit = c.isExit();
+            } catch (FishException e) {
+                ui.showError(e.getMessage());
+            } finally {
+                ui.showLine();
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        String logo = " __><(((º>";
-        System.out.println("Greetings from" + logo);
+        new Fish("data/fish.txt").run();
+    }
+
+
+    /*public static void main(String[] args) {
 
         Storage storage = new Storage("data", "fish.txt");
         ArrayList<Task> tasks = new ArrayList<>(storage.load());
@@ -78,10 +116,5 @@ public class Fish {
 
         }
         sc.close();
-    }
-
-
-    public static void exit () {
-        System.out.println("Goodbye Au Revoir~");
-    }
+    } */
 }

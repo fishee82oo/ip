@@ -18,11 +18,12 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        String d2 = d1.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+        String d2 = d1.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         return "[D]" + super.toString() + " (by: " + d2 + ")";
     }
 
     @Override public String toFileString() {
-        return String.join(" | ", "D", isDone ? "1" : "0", description, this.d1.format(DateTimeFormatter.ofPattern("MMM d yyyy")));
+        return String.join(" | ", "D", isDone ? "1" : "0", description,
+                this.d1.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
     }
 }

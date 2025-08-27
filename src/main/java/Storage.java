@@ -12,8 +12,11 @@ public class Storage {
         this.dataFile = new File(folder, filename);
     }
 
+    public Storage(String path) {
+        this.dataFile = new File(path);
+    }
 
-    public List<Task> load() {
+    public ArrayList<Task> load() throws IOException {
         ArrayList<Task> tasks = new ArrayList<>();
         if (!dataFile.exists()) return tasks;
 
@@ -23,7 +26,7 @@ public class Storage {
                 if (!line.isEmpty())tasks.add(parseLine(line));
             }
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load tasks: " + e.getMessage(), e);
+            throw new RuntimeException("Cannot load tasks: " + e.getMessage(), e);
         }
         return tasks;
     }
@@ -33,7 +36,7 @@ public class Storage {
         try (PrintWriter out = new PrintWriter(new FileWriter(dataFile, false))) {
             for (Task t : tasks) out.println(t.toFileString());
         } catch (IOException e) {
-            throw new RuntimeException("Failed to save tasks: " + e.getMessage(), e);
+            throw new RuntimeException("Cannot save tasks: " + e.getMessage(), e);
         }
     }
 
