@@ -13,6 +13,9 @@ public class Event extends Task {
         this.from = LocalDateTime.parse(from, DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
         this.to = LocalDateTime.parse(to, DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"));
 
+        if (this.from.isAfter(this.to)) {
+            throw new IllegalArgumentException("Event 'from' time must be earlier than or equal to 'to' time.");
+        }
     }
 
     @Override

@@ -1,6 +1,9 @@
 package Fish.command;
 
+import Fish.storage.Storage;
+import Fish.task.TaskList;
 import Fish.ui.Ui;
+import Fish.command.*;
 
 public class DeleteCommand extends Command {
     private final int idx;

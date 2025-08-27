@@ -1,4 +1,9 @@
 package Fish.command;
+import Fish.storage.Storage;
+import Fish.task.TaskList;
+import Fish.FishException;
+import Fish.ui.Ui;
+import Fish.task.*;
 
 public class AddCommand extends Command {
     private final String type;
@@ -42,7 +47,7 @@ public class AddCommand extends Command {
                 break;
             case "deadline":
                 if (by == null)
-                    throw new FishException("Fish.task.Deadline needs a death!");
+                    throw new FishException("Fish.ui.Fish.task.Deadline needs a death!");
 
                 t = new Deadline(description, by);
                 break;

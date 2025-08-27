@@ -1,6 +1,9 @@
+package Fish.ui;
+
 import Fish.command.Command;
+import Fish.storage.Storage;
 import Fish.task.TaskList;
-import Fish.ui.Ui;
+import Fish.FishException;
 
 import java.io.IOException;
 
@@ -46,8 +49,8 @@ public class Fish {
 
     /*public static void main(String[] args) {
 
-        Storage storage = new Storage("data", "fish.txt");
-        ArrayList<Fish.task.Task> tasks = new ArrayList<>(storage.load());
+        Fish.storage.Storage storage = new Fish.storage.Storage("data", "fish.txt");
+        ArrayList<Fish.ui.Fish.task.Task> tasks = new ArrayList<>(storage.load());
         System.out.println("Tasks loaded successfully!");
 
         Scanner sc = new Scanner(System.in);
@@ -76,17 +79,17 @@ public class Fish {
                     String desc = input.substring(5);
 
                     if (desc.isEmpty()) {
-                        throw new FishException("Tu dois parler quelque chose");
+                        throw new Fish.FishException("Tu dois parler quelque chose");
                     }
 
-                    Fish.task.Task todo = new Fish.task.Todo(desc);
+                    Fish.ui.Fish.task.Task todo = new Fish.ui.Fish.task.Todo(desc);
                     tasks.add(todo);
 
                     System.out.println(todo + " has been added");
                     storage.save(tasks);
                 } else if (input.startsWith("deadline ")) {
                     String[] parts = input.substring(9).split(" /by ", 2);
-                    Fish.task.Task t = new Fish.task.Deadline(parts[0], parts[1]);
+                    Fish.ui.Fish.task.Task t = new Fish.ui.Fish.task.Deadline(parts[0], parts[1]);
                     System.out.println(parts[0] + " has been added");
                     tasks.add(t);
 
@@ -94,7 +97,7 @@ public class Fish {
                     storage.save(tasks);
                 } else if (input.startsWith("event ")) {
                     String[] parts = input.substring(6).split(" /from | /to ");
-                    Fish.task.Task e = new Fish.task.Event(parts[0], parts[1], parts[2]);
+                    Fish.ui.Fish.task.Task e = new Fish.ui.Fish.task.Event(parts[0], parts[1], parts[2]);
                     tasks.add(e);
 
                     System.out.println(e + " has been added");
@@ -105,14 +108,14 @@ public class Fish {
                     }
                 } else if (input.startsWith("delete ")) {
                     int n = Integer.parseInt(input.substring(7));
-                    Fish.task.Task removed = tasks.remove(n - 1);
+                    Fish.ui.Fish.task.Task removed = tasks.remove(n - 1);
 
                     System.out.println(removed + " has been deleted");
                     storage.save(tasks);
                 } else {
-                    throw new FishException("up?9");
+                    throw new Fish.FishException("up?9");
                 }
-            }  catch (FishException f) {
+            }  catch (Fish.FishException f) {
                 System.out.println(f.getMessage());
             }
 

@@ -1,6 +1,8 @@
 package Fish.command;
 
 import Fish.ui.Ui;
+import Fish.storage.Storage;
+import Fish.task.TaskList;
 
 public class ExitCommand extends Command {
 

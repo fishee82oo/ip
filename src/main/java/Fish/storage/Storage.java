@@ -1,3 +1,5 @@
+package Fish.storage;
+
 import Fish.task.Deadline;
 import Fish.task.Event;
 import Fish.task.Task;
