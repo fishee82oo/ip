@@ -1,3 +1,7 @@
+package Fish.command;
+
+import Fish.ui.Ui;
+
 public class ExitCommand extends Command {
 
     @Override

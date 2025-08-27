@@ -1,3 +1,8 @@
+import Fish.task.Deadline;
+import Fish.task.Event;
+import Fish.task.Task;
+import Fish.task.Todo;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

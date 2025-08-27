@@ -1,6 +1,8 @@
+import Fish.command.Command;
+import Fish.task.TaskList;
+import Fish.ui.Ui;
+
 import java.io.IOException;
-import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Fish {
 
@@ -45,7 +47,7 @@ public class Fish {
     /*public static void main(String[] args) {
 
         Storage storage = new Storage("data", "fish.txt");
-        ArrayList<Task> tasks = new ArrayList<>(storage.load());
+        ArrayList<Fish.task.Task> tasks = new ArrayList<>(storage.load());
         System.out.println("Tasks loaded successfully!");
 
         Scanner sc = new Scanner(System.in);
@@ -77,14 +79,14 @@ public class Fish {
                         throw new FishException("Tu dois parler quelque chose");
                     }
 
-                    Task todo = new Todo(desc);
+                    Fish.task.Task todo = new Fish.task.Todo(desc);
                     tasks.add(todo);
 
                     System.out.println(todo + " has been added");
                     storage.save(tasks);
                 } else if (input.startsWith("deadline ")) {
                     String[] parts = input.substring(9).split(" /by ", 2);
-                    Task t = new Deadline(parts[0], parts[1]);
+                    Fish.task.Task t = new Fish.task.Deadline(parts[0], parts[1]);
                     System.out.println(parts[0] + " has been added");
                     tasks.add(t);
 
@@ -92,7 +94,7 @@ public class Fish {
                     storage.save(tasks);
                 } else if (input.startsWith("event ")) {
                     String[] parts = input.substring(6).split(" /from | /to ");
-                    Task e = new Event(parts[0], parts[1], parts[2]);
+                    Fish.task.Task e = new Fish.task.Event(parts[0], parts[1], parts[2]);
                     tasks.add(e);
 
                     System.out.println(e + " has been added");
@@ -103,7 +105,7 @@ public class Fish {
                     }
                 } else if (input.startsWith("delete ")) {
                     int n = Integer.parseInt(input.substring(7));
-                    Task removed = tasks.remove(n - 1);
+                    Fish.task.Task removed = tasks.remove(n - 1);
 
                     System.out.println(removed + " has been deleted");
                     storage.save(tasks);
