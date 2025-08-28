@@ -40,25 +40,25 @@ public class AddCommand extends Command {
     public void execute(TaskList tasks, Ui ui, Storage storage) throws FishException {
         Task t;
         switch (type) {
-            case "todo":
-                if (description.isBlank())
-                    throw new FishException("The description of a todo cannot be empty.");
-                t = new Todo(description);
-                break;
-            case "deadline":
-                if (by == null)
-                    throw new FishException("Fish.ui.Fish.task.Deadline needs a death!");
+        case "todo":
+            if (description.isBlank())
+                throw new FishException("The description of a todo cannot be empty.");
+            t = new Todo(description);
+            break;
+        case "deadline":
+            if (by == null)
+                throw new FishException("Fish.ui.Fish.task.Deadline needs a death!");
 
-                t = new Deadline(description, by);
-                break;
-            case "event":
-                if (from == null || to == null)
-                    throw new FishException("Je need to know gei si lei yiu zou sai ah");
+            t = new Deadline(description, by);
+            break;
+        case "event":
+            if (from == null || to == null)
+                throw new FishException("Je need to know gei si lei yiu zou sai ah");
 
-                t = new Event(description, from, to);
-                break;
-            default:
-                throw new FishException("Please specific the task type rather than a/an " + type);
+            t = new Event(description, from, to);
+            break;
+        default:
+            throw new FishException("Please specific the task type rather than a/an " + type);
         }
         tasks.add(t);
         storage.save(tasks.getTasks());

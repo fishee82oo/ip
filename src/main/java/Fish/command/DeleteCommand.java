@@ -15,8 +15,8 @@ public class DeleteCommand extends Command {
     @Override
     public void execute (TaskList tasks, Ui ui, Storage storage) {
         tasks.delete(this.idx);
-        int index = this.idx + 1;
-        ui.printIn("Booo t'as supprime le task " + index);
+        int taskIndex = this.idx + 1;
+        ui.printIn("Booo t'as supprime le task " + taskIndex);
         storage.save(tasks.getTasks());
     }
 }

@@ -10,7 +10,7 @@ public abstract class Task {
     }
 
     public String getStatusIcon() {
-        return (isDone ? "X" : " "); // mark done task with X
+        return (isDone ? "X" : " ");
     }
 
     public void markAsDone () {
@@ -21,20 +21,8 @@ public abstract class Task {
         this.isDone = false;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public boolean isDone() {
         return isDone;
-    }
-
-    public void setIsDone(boolean isDone) {
-        this.isDone = isDone;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public abstract String getType() ;

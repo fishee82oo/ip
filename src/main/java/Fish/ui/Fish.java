@@ -4,14 +4,13 @@ import Fish.command.Command;
 import Fish.storage.Storage;
 import Fish.task.TaskList;
 import Fish.FishException;
-
 import java.io.IOException;
 
 public class Fish {
 
     private Storage storage;
     private TaskList tasks;
-    private Ui ui;
+    private final Ui ui;
 
     public Fish (String filePath) {
         ui = new Ui();
