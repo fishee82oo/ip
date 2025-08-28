@@ -22,8 +22,8 @@ public class TaskList {
         tasks.add(t);
     }
 
-    public Task delete(int i) {
-        return tasks.remove(i);
+    public void delete(int i) {
+        tasks.remove(i);
     }
 
     public Task get(int i) {
