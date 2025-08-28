@@ -45,6 +45,10 @@ public class Parser {
                 throw new FishException("Tu dois utiliser: event <desc> /from <start> /to <end>");
             return new AddCommand("event", fromSplit[0], toSplit[0], toSplit[1]);
         }
+        if (s.startsWith("find ")) {
+            String body = s.substring(5);
+            return new FindCommand(body);
+        }
 
         throw new FishException("Je ne sais pas c'est quoi ca? :(");
     }
