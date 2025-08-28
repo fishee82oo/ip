@@ -25,6 +25,10 @@ public abstract class Task {
         return isDone;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public abstract String getType() ;
 
     public String toString () {
