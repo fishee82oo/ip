@@ -6,12 +6,21 @@ import Fish.task.TaskList;
 import Fish.FishException;
 import java.io.IOException;
 
+/**
+ * Represents a Chatbot itself
+ */
 public class Fish {
 
     private Storage storage;
     private TaskList tasks;
     private final Ui ui;
 
+    /**
+     * Initializes a Fish chatbot from a known filePath
+     *If loading fails, an empty TaskList is created and a loading error is shown.
+     *
+     * @param filePath The filepath to load the TaskList.
+     */
     public Fish (String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -23,6 +32,9 @@ public class Fish {
         }
     }
 
+    /**
+     * Runs the main REPL loop:
+     */
     public void run() {
         ui.showWelcome();
         boolean isExit = false;
@@ -41,6 +53,11 @@ public class Fish {
         }
     }
 
+    /**
+     * Creates a Fish instance with the default data file and starts it.
+     *
+     * @param args CLI arguments
+     */
     public static void main(String[] args) {
         new Fish("data/fish.txt").run();
     }
