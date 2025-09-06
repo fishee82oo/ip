@@ -14,11 +14,11 @@ public class Ui {
         System.out.println("Greetings from __><(((º>");
     }
 
-    public void showLoadingError () {
+    public void showLoadingError() {
         System.out.println("Loading error");
     }
 
-    public void showError (String message) {
+    public void showError(String message) {
         System.out.println(message);
     }
 
@@ -30,7 +30,7 @@ public class Ui {
         System.out.println("____________________________________________________________");
     }
 
-    public void printIn (String message) {
-        System.out.println(message);
+    public void printIn(String s) {
+        System.out.println(s);
     }
 }

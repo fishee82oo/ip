@@ -12,6 +12,7 @@ public class Fish {
     private Storage storage;
     private TaskList tasks;
     private Ui ui;
+    public static final String DEFAULT_FILE_PATH = "data/fish.txt";
 
     public Fish (String filePath) {
         ui = new Ui();
@@ -22,6 +23,10 @@ public class Fish {
             ui.showLoadingError();
             tasks = new TaskList();
         }
+    }
+
+    public Fish() {
+        this(DEFAULT_FILE_PATH);           // delegate to the real ctor
     }
 
     public void run() {
@@ -43,83 +48,21 @@ public class Fish {
     }
 
     public static void main(String[] args) {
-        new Fish("data/fish.txt").run();
+        new Fish().run();
     }
 
-
-    /*public static void main(String[] args) {
-
-        Fish.storage.Storage storage = new Fish.storage.Storage("data", "fish.txt");
-        ArrayList<Fish.ui.Fish.task.Task> tasks = new ArrayList<>(storage.load());
-        System.out.println("Tasks loaded successfully!");
-
-        Scanner sc = new Scanner(System.in);
-        int idx = 0;
-
-        while (true) {
-            String input = sc.nextLine();
-            try {
-                if (input.equals("bye")) {
-                    exit();
-                    break;
-
-                } else if (input.startsWith("mark ")) {
-                    int n = Integer.parseInt(input.substring(5));
-                    tasks.get(n - 1).markAsDone();
-
-                    System.out.println("Felicitation on " + tasks.get(n - 1));
-                    storage.save(tasks);
-                } else if (input.startsWith("unmark ")) {
-                    int n = Integer.parseInt(input.substring(7));
-                    tasks.get(n - 1).markAsUndone();
-
-                    System.out.println("Ok task undone lo " + tasks.get(n - 1));
-                    storage.save(tasks);
-                } else if (input.startsWith("todo ")) {
-                    String desc = input.substring(5);
-
-                    if (desc.isEmpty()) {
-                        throw new Fish.FishException("Tu dois parler quelque chose");
-                    }
-
-                    Fish.ui.Fish.task.Task todo = new Fish.ui.Fish.task.Todo(desc);
-                    tasks.add(todo);
-
-                    System.out.println(todo + " has been added");
-                    storage.save(tasks);
-                } else if (input.startsWith("deadline ")) {
-                    String[] parts = input.substring(9).split(" /by ", 2);
-                    Fish.ui.Fish.task.Task t = new Fish.ui.Fish.task.Deadline(parts[0], parts[1]);
-                    System.out.println(parts[0] + " has been added");
-                    tasks.add(t);
-
-                    System.out.println(t + " has been added");
-                    storage.save(tasks);
-                } else if (input.startsWith("event ")) {
-                    String[] parts = input.substring(6).split(" /from | /to ");
-                    Fish.ui.Fish.task.Task e = new Fish.ui.Fish.task.Event(parts[0], parts[1], parts[2]);
-                    tasks.add(e);
-
-                    System.out.println(e + " has been added");
-                    storage.save(tasks);
-                } else if (input.equals("list")) {
-                    for (int i = 0; i < tasks.size(); i++) {
-                        System.out.println((i + 1) + ". " + tasks.get(i));
-                    }
-                } else if (input.startsWith("delete ")) {
-                    int n = Integer.parseInt(input.substring(7));
-                    Fish.ui.Fish.task.Task removed = tasks.remove(n - 1);
-
-                    System.out.println(removed + " has been deleted");
-                    storage.save(tasks);
-                } else {
-                    throw new Fish.FishException("up?9");
-                }
-            }  catch (Fish.FishException f) {
-                System.out.println(f.getMessage());
-            }
-
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        BufferingUi uiBuf = new BufferingUi();
+        try {
+            Command c = Parser.parse(input);
+            c.execute(tasks, uiBuf, storage);
+            if (c.isExit()) ui.showExit();
+        } catch (FishException e) {
+            uiBuf.showError(e.getMessage());
         }
-        sc.close();
-    } */
+        return uiBuf.flush();
+    }
 }
