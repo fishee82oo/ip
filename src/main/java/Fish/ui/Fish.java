@@ -4,6 +4,7 @@ import Fish.command.Command;
 import Fish.storage.Storage;
 import Fish.task.TaskList;
 import Fish.FishException;
+import fish.ui.Parser;
 
 import java.io.IOException;
 

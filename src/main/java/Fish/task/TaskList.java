@@ -23,10 +23,12 @@ public class TaskList {
     }
 
     public Task delete(int i) {
+        assert i <= tasks.size() && i >= 0 : "Index out of range";
         return tasks.remove(i);
     }
 
     public Task get(int i) {
+        assert i <= tasks.size() && i >= 0 : "Index out of range";
         return tasks.get(i);
     }
 
