@@ -1,5 +1,6 @@
 package fish.task;
 
+import fish.FishException;
 import java.util.ArrayList;
 
 public class TaskList {
@@ -18,7 +19,10 @@ public class TaskList {
         return tasks;
     }
 
-    public void add(Task t) {
+    public void add(Task t) throws FishException {
+        if (tasks.contains(t)) {
+            throw new FishException("This task already exists: " + t);
+        }
         tasks.add(t);
     }
 

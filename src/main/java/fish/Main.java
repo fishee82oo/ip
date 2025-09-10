@@ -1,7 +1,6 @@
 package fish;
 import java.io.IOException;
 
-import fish.ui.Fish;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

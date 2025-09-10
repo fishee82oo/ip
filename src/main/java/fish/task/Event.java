@@ -2,6 +2,7 @@ package fish.task;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Event extends Task {
 
@@ -33,5 +34,22 @@ public class Event extends Task {
         return String.join(" | ", "E", isDone ? "1" : "0", description,
                 this.from.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")),
                 this.to.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm")));
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (!(obj instanceof Event)) {
+            return false;
+        }
+        Event other = (Event) obj;
+        return from.equals(other.from) && to.equals(other.to);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), from, to);
     }
 }

@@ -1,5 +1,7 @@
 package fish.task;
 
+import java.util.Objects;
+
 public abstract class Task {
     protected String description;
     protected boolean isDone;
@@ -45,5 +47,23 @@ public abstract class Task {
 
     public String toFileString() {
         return String.join(" | ", getType(), isDone ? "1" : "0", description);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Task)) {
+            return false;
+        }
+        Task other = (Task) obj;
+        return this.getType().equals(other.getType())
+                && this.description.equals(other.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getType(), description);
     }
 }
