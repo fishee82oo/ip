@@ -1,11 +1,11 @@
-package Fish.command;
+package fish.command;
 
-import Fish.storage.Storage;
-import Fish.task.Task;
-import Fish.task.TaskList;
-import Fish.ui.Ui;
+import fish.FishException;
+import fish.storage.Storage;
+import fish.task.TaskList;
+import fish.ui.Ui;
 
-public class FindCommand extends Command{
+public class FindCommand extends Command {
 
     private String keyword;
 
@@ -14,7 +14,7 @@ public class FindCommand extends Command{
     }
 
     @Override
-    public void execute (TaskList tasks, Ui ui, Storage storage) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws FishException {
         TaskList t = new TaskList();
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).getDescription().contains(keyword)) {
