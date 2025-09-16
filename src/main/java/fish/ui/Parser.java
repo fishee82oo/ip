@@ -5,6 +5,7 @@ import fish.command.AddCommand;
 import fish.command.Command;
 import fish.command.DeleteCommand;
 import fish.command.ExitCommand;
+import fish.command.ListCommand;
 import fish.command.MarkCommand;
 import fish.command.UnmarkCommand;
 
