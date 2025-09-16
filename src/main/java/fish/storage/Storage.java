@@ -10,10 +10,19 @@ import fish.task.Event;
 import fish.task.Task;
 import fish.task.Todo;
 
-
+/**
+ * Handles reading from and writing to the task storage file.
+ */
 public class Storage {
     private final File dataFile;
 
+    /**
+     * Constructs a storage handler within the given directory using the specified file name.
+     * The directory is created if it does not already exist.
+     *
+     * @param dir      directory containing the storage file
+     * @param filename storage file name
+     */
     public Storage(String dir, String filename) {
         File folder = new File(dir);
         if (!folder.exists()) {

@@ -8,6 +8,9 @@ import fish.task.TaskList;
 import fish.task.Todo;
 import fish.ui.Ui;
 
+/**
+ * Adds a new task of the specified type to the task list.
+ */
 public class AddCommand extends Command {
     private final String type;
     private final String description;

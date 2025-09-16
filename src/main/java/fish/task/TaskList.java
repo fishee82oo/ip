@@ -3,14 +3,25 @@ package fish.task;
 import fish.FishException;
 import java.util.ArrayList;
 
+/**
+ * Maintains an ordered collection of {@link Task} instances.
+ */
 public class TaskList {
 
     private ArrayList<Task> tasks;
 
+    /**
+     * Constructs a task list backed by the given tasks.
+     *
+     * @param tasks initial tasks to populate the list
+     */
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
     }
 
+    /**
+     * Constructs an empty task list.
+     */
     public TaskList() {
         this.tasks = new ArrayList<>();
     }

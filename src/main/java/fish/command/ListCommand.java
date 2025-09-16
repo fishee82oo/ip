@@ -4,6 +4,9 @@ import fish.storage.Storage;
 import fish.task.TaskList;
 import fish.ui.Ui;
 
+/**
+ * Displays the current list of tasks to the user.
+ */
 public class ListCommand extends fish.command.Command {
 
     @Override

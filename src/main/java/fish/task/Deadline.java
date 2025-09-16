@@ -4,10 +4,19 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+/**
+ * Represents a task that must be completed by a specified date.
+ */
 public class Deadline extends Task {
 
     protected LocalDate date;
 
+    /**
+     * Constructs a deadline task with the provided description and due date.
+     *
+     * @param description description of the task
+     * @param by          due date in ISO-8601 format
+     */
     public Deadline(String description, String by) {
         super(description);
         this.date = LocalDate.parse(by);
