@@ -60,6 +60,10 @@ public class Parser {
             String to = toSplit[1].trim();
             return new AddCommand("event", description, from, to);
         }
+        if (s.startsWith("find ")) {
+            String body = s.substring(5);
+            return new FindCommand(body);
+        }
 
 
         throw new FishException("Je ne sais pas c'est quoi ca? :(");
