@@ -22,7 +22,7 @@ public class DialogBox extends HBox {
     private static final String DIALOG_STYLE_TEMPLATE =
             "-fx-background-color: %s; -fx-background-radius: 12; -fx-padding: 10;";
     private static final String USER_DIALOG_COLOR = "#E6D8FF";
-    private static final String FISH_DIALOG_COLOR = "#FFF5B1";
+    private static final String FISH_DIALOG_COLOR = "#FFF5B1"; // Assisted by Codex
 
     @FXML
     private Label dialog;
