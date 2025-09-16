@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import fish.task.Deadline;
 import fish.task.Event;
 import fish.task.Task;
 import fish.task.Todo;

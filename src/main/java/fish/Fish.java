@@ -2,7 +2,6 @@ package fish;
 import java.io.IOException;
 import fish.command.Command;
 import fish.storage.Storage;
-import fish.task.TaskList;
 import fish.ui.BufferingUi;
 import fish.ui.Parser;
 

@@ -7,7 +7,7 @@ import fish.ui.Ui;
 /**
  * Displays the current list of tasks to the user.
  */
-public class ListCommand extends fish.command.Command {
+public class ListCommand extends Command {
 
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
