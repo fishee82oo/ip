@@ -32,6 +32,9 @@ public class MainWindow extends AnchorPane {
     /** Injects the Duke instance */
     public void setFish(Fish f) {
         fish = f;
+        dialogContainer.getChildren().add(
+                DialogBox.getFishDialog(fish.getGreeting(), fishImage)
+        );
     }
 
     /**

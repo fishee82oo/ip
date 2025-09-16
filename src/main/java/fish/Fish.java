@@ -53,4 +53,10 @@ public class Fish {
         }
         return ui.flush();
     }
+
+    public String getGreeting() {
+        ui.showWelcome();
+        return ui.flush();
+    }
+
 }
