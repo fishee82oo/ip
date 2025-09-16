@@ -44,7 +44,7 @@ public class MainWindow extends AnchorPane {
         String response = fish.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, fishImage)
+                DialogBox.getFishDialog(response, fishImage)
         );
         userInput.clear();
     }

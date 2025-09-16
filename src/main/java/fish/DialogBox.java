@@ -18,6 +18,12 @@ import javafx.scene.layout.HBox;
  * and a label containing text from the speaker.
  */
 public class DialogBox extends HBox {
+
+    private static final String DIALOG_STYLE_TEMPLATE =
+            "-fx-background-color: %s; -fx-background-radius: 12; -fx-padding: 10;";
+    private static final String USER_DIALOG_COLOR = "#E6D8FF";
+    private static final String FISH_DIALOG_COLOR = "#FFF5B1";
+
     @FXML
     private Label dialog;
     @FXML
@@ -48,12 +54,19 @@ public class DialogBox extends HBox {
     }
 
     public static DialogBox getUserDialog(String text, Image img) {
-        return new DialogBox(text, img);
+        var db = new DialogBox(text, img);
+        db.applyDialogStyling(USER_DIALOG_COLOR);
+        return db;
     }
 
-    public static DialogBox getDukeDialog(String text, Image img) {
+    public static DialogBox getFishDialog(String text, Image img) {
         var db = new DialogBox(text, img);
+        db.applyDialogStyling(FISH_DIALOG_COLOR);
         db.flip();
         return db;
+    }
+
+    private void applyDialogStyling(String backgroundColor) {
+        dialog.setStyle(String.format(DIALOG_STYLE_TEMPLATE, backgroundColor));
     }
 }

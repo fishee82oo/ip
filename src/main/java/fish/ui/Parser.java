@@ -41,7 +41,9 @@ public class Parser {
             if (parts.length < 2) {
                 throw new FishException("The correct format should be: deadline <desc> /by <time>");
             }
-            return new AddCommand("deadline", parts[0], parts[1]);
+            String description = parts[0].trim();
+            String by = parts[1].trim();
+            return new AddCommand("deadline", description, by);
         }
         if (s.startsWith("event ")) {
             String body = s.substring(6).trim();
@@ -49,11 +51,14 @@ public class Parser {
             if (fromSplit.length < 2) {
                 throw new FishException("The correct format should be: event <desc> /from <start> /to <end>");
             }
+            String description = fromSplit[0].trim();
             String[] toSplit = fromSplit[1].split("/to", 2);
             if (toSplit.length < 2) {
                 throw new FishException("Tu dois utiliser: event <desc> /from <start> /to <end>");
             }
-            return new AddCommand("event", fromSplit[0], toSplit[0], toSplit[1]);
+            String from = toSplit[0].trim();
+            String to = toSplit[1].trim();
+            return new AddCommand("event", description, from, to);
         }
 
 
