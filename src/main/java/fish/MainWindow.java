@@ -29,7 +29,7 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Duke instance */
+    /** Injects the Fish instance */
     public void setFish(Fish f) {
         fish = f;
         dialogContainer.getChildren().add(
