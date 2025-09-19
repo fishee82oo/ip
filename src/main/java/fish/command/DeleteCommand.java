@@ -31,7 +31,7 @@ public class DeleteCommand extends Command {
      * @throws FishException If required fields are missing or invalid.
      */
     @Override
-    public void execute (TaskList tasks, Ui ui, Storage storage) {
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
         tasks.delete(this.idx);
         int taskIndex = this.idx + 1;
         ui.printIn("Booo t'as supprime le task " + taskIndex);
