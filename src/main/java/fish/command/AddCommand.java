@@ -1,7 +1,11 @@
 package fish.command;
 import fish.FishException;
 import fish.storage.Storage;
-import fish.task.*;
+import fish.task.Deadline;
+import fish.task.Event;
+import fish.task.Task;
+import fish.task.TaskList;
+import fish.task.Todo;
 import fish.ui.Ui;
 
 /**

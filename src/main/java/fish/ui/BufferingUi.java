@@ -2,7 +2,8 @@ package fish.ui;
 
 public class BufferingUi extends Ui {
 
-    private static final String DEFAULT_GREETING = "__><(((º>\n I am Fish AKA your capable task manager \n I speak French et Canto a bit";
+    private static final String DEFAULT_GREETING = "__><(((º>\n I am Fish AKA your capable task manager "
+            + "\n I speak French et Canto a bit";
     private final StringBuilder sb = new StringBuilder();
 
 

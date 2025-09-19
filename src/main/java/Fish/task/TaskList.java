@@ -1,7 +1,8 @@
 package fish.task;
 
-import fish.FishException;
 import java.util.ArrayList;
+
+import fish.FishException;
 
 /**
  * Maintains an ordered collection of {@link Task} instances.

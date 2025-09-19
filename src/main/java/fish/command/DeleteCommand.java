@@ -28,7 +28,6 @@ public class DeleteCommand extends Command {
      * @param tasks   The TaskList where the tasks will be added.
      * @param ui      The Ui object for user interaction.
      * @param storage The Storage object for saving tasks persistently.
-     * @throws FishException If required fields are missing or invalid.
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {

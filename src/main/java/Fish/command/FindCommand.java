@@ -5,6 +5,9 @@ import fish.storage.Storage;
 import fish.task.TaskList;
 import fish.ui.Ui;
 
+/**
+ * Stands for a command that looks for a command by description.
+ */
 public class FindCommand extends Command {
 
     private String keyword;
