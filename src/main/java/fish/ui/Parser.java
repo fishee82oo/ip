@@ -8,6 +8,7 @@ import fish.command.ExitCommand;
 import fish.command.FindCommand;
 import fish.command.ListCommand;
 import fish.command.MarkCommand;
+import fish.command.SortDeadlineCommand;
 import fish.command.UnmarkCommand;
 
 public class Parser {
@@ -66,8 +67,11 @@ public class Parser {
             return new FindCommand(body);
         }
 
+        if (s.equals("sort deadlines")) {
+            return new SortDeadlineCommand();
+        }
 
-        throw new FishException("Je ne sais pas c'est quoi ca? :(");
+        throw new FishException("I'm sorry, but I don't recognise that command.");
     }
 
     private static int parseIndex(String s) throws FishException {
