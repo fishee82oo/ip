@@ -22,11 +22,19 @@ public class Deadline extends Task {
         this.date = LocalDate.parse(by);
     }
 
+    /**
+     * Returns the due date for this deadline.
+     *
+     * @return due date as a {@link LocalDate}
+     */
+    public LocalDate getDueDate() {
+        return date;
+    }
+
     @Override
     public String getType() {
         return "D";
     }
-
     @Override
     public String toString() {
         String parsedDate = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));

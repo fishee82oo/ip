@@ -27,15 +27,32 @@ public class Storage {
      * @param filename storage file name
      */
     public Storage(String dir, String filename) {
-        File folder = new File(dir);
-        if (!folder.exists()) {
-            folder.mkdirs();
-        }
-        this.dataFile = new File(folder, filename);
+        this(new File(dir, filename));
     }
 
     public Storage(String path) {
-        this.dataFile = new File(path);
+        this(new File(path));
+    }
+
+    private Storage(File file) {
+        this.dataFile = prepareFile(file);
+    }
+    private static File prepareFile(File file) {
+        File parent = file.getParentFile();
+        if (parent != null && !parent.exists()) {
+            boolean created = parent.mkdirs();
+            if (!created && !parent.exists()) {
+                throw new RuntimeException("Cannot create storage directory: " + parent);
+            }
+        }
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                throw new RuntimeException("Cannot create storage file: " + e.getMessage(), e);
+            }
+        }
+        return file;
     }
 
     public ArrayList<Task> load() throws IOException {
