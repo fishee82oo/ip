@@ -30,7 +30,7 @@ public class UnmarkCommand extends Command {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         tasks.get(idx).markAsUndone();
-        ui.printIn("Already undone " + tasks.get(idx) + " Liao.");
+        ui.printIn("Undo" + tasks.get(idx) + ", remember to complete it soon~");
         storage.save(tasks.getTasks());
     }
 }

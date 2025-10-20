@@ -40,7 +40,7 @@ public class Parser {
         if (s.startsWith("deadline ")) {
             String body = s.substring(9).trim();
             String[] parts = body.split("/by", 2);
-            if (parts.length < 2) {
+            if (parts.length <= 2) {
                 throw new FishException("The correct format should be: deadline <desc> /by <time>");
             }
             String description = parts[0].trim();
@@ -56,7 +56,7 @@ public class Parser {
             String description = fromSplit[0].trim();
             String[] toSplit = fromSplit[1].split("/to", 2);
             if (toSplit.length < 2) {
-                throw new FishException("Tu dois utiliser: event <desc> /from <start> /to <end>");
+                throw new FishException("The correct format should be: event <desc> /from <start> /to <end>");
             }
             String from = toSplit[0].trim();
             String to = toSplit[1].trim();
@@ -71,7 +71,7 @@ public class Parser {
             return new SortDeadlineCommand();
         }
 
-        throw new FishException("I'm sorry, but I don't recognise that command.");
+        throw new FishException("Sorry I need a valid command.");
     }
 
     private static int parseIndex(String s) throws FishException {
@@ -82,7 +82,7 @@ public class Parser {
             }
             return k - 1;
         } catch (NumberFormatException e) {
-            throw new FishException("Please donner a valid task numero (positive integer).");
+            throw new FishException("Please provide a valid task index (positive integer).");
         }
     }
 }

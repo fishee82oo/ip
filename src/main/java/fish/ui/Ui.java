@@ -23,7 +23,7 @@ public class Ui {
     }
 
     public void showExit() {
-        System.out.println("Merci Au Revoir~");
+        System.out.println("Thanks see you next time~");
     }
 
     public void showLine() {

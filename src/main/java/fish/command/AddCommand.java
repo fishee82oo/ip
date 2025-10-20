@@ -54,13 +54,13 @@ public class AddCommand extends Command {
             break;
         case "deadline":
             if (by == null) {
-                throw new FishException("Fish.ui.Fish.task.Deadline needs a death!");
+                throw new FishException("Please specify a /by in the format of <YYYY-MM-DD>!");
             }
             t = new Deadline(description, by);
             break;
         case "event":
             if (from == null || to == null) {
-                throw new FishException("Je need to know gei si lei yiu zou sai ah");
+                throw new FishException("Please specify a /from and a /to both in the format of <YYYY-MM-DD HH:mm>!");
             }
             t = new Event(description, from, to);
             break;
@@ -70,7 +70,7 @@ public class AddCommand extends Command {
         tasks.add(t);
         storage.save(tasks.getTasks());
 
-        ui.printIn("Bien! I've added the task:  " + t);
-        ui.printIn("Maintenant t'as " + tasks.size() + " tasks in the list.");
+        ui.printIn("Great! I've added the task:  " + t);
+        ui.printIn("Right now fish is taking " + tasks.size() + " tasks.");
     }
 }

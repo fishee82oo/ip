@@ -30,7 +30,7 @@ public class MarkCommand extends Command {
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         tasks.get(idx).markAsDone();
-        ui.printIn("Felicitation on completing" + tasks.get(idx));
+        ui.printIn("Congrats on completing" + tasks.get(idx));
         storage.save(tasks.getTasks());
     }
 }
