@@ -47,7 +47,7 @@ public class Fish {
      */
     public String getResponse(String input) {
         try {
-            Command c = Parser.parse(input);
+            Command c = Parser.parse(input, tasks);
             c.execute(tasks, ui, storage);
         } catch (FishException e) {
             ui.showError(e.getMessage());

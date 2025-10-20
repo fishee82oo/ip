@@ -10,9 +10,10 @@ import fish.command.ListCommand;
 import fish.command.MarkCommand;
 import fish.command.SortDeadlineCommand;
 import fish.command.UnmarkCommand;
+import fish.task.TaskList;
 
 public class Parser {
-    public static Command parse(String input) throws FishException {
+    public static Command parse(String input, TaskList tasks) throws FishException {
         String s = input.trim();
         if (s.equals("bye")) {
             return new ExitCommand();
@@ -22,15 +23,15 @@ public class Parser {
         }
 
         if (s.startsWith("mark ")) {
-            int n = parseIndex(s.substring(5));
+            int n = parseIndex(s.substring(5), tasks);
             return new MarkCommand(n);
         }
         if (s.startsWith("unmark ")) {
-            int n = parseIndex(s.substring(7));
+            int n = parseIndex(s.substring(7), tasks);
             return new UnmarkCommand(n);
         }
         if (s.startsWith("delete ")) {
-            int n = parseIndex(s.substring(7));
+            int n = parseIndex(s.substring(7), tasks);
             return new DeleteCommand(n);
         }
 
@@ -71,18 +72,18 @@ public class Parser {
             return new SortDeadlineCommand();
         }
 
-        throw new FishException("Sorry I need a valid command.");
+        throw new FishException("Sorry I need a valid command");
     }
 
-    private static int parseIndex(String s) throws FishException {
+    private static int parseIndex(String s, TaskList tasks) throws FishException {
         try {
             int k = Integer.parseInt(s.trim());
-            if (k <= 0) {
+            if (k <= 0 || k > tasks.size()) {
                 throw new NumberFormatException();
             }
             return k - 1;
         } catch (NumberFormatException e) {
-            throw new FishException("Please provide a valid task index (positive integer).");
+            throw new FishException("Please provide a valid task index");
         }
     }
 }
