@@ -72,5 +72,6 @@ public class AddCommand extends Command {
 
         ui.printIn("Great! I've added the task:  " + t);
         ui.printIn("Right now fish is taking " + tasks.size() + " tasks.");
+        ui.printIn("Try <sort deadlines> to sort them in ascending order.");
     }
 }

@@ -41,7 +41,7 @@ public class Parser {
         if (s.startsWith("deadline ")) {
             String body = s.substring(9).trim();
             String[] parts = body.split("/by", 2);
-            if (parts.length <= 2) {
+            if (parts.length < 2) {
                 throw new FishException("The correct format should be: deadline <desc> /by <time>");
             }
             String description = parts[0].trim();

@@ -28,7 +28,8 @@ Below are some essential commands to try once Fish greets you:
 | `mark <index>` / `unmark <index>`                                   | Toggles whether a task is complete.                       |
 | `delete <index>`                                                    | Removes the task at the given position.                   |
 | `find <keyword> `                                                   | Returns the task whose description contains that keyword. |
+| `sort deadlines`                                                    | Lists all deadlines ordered by due date.                  |
 | `bye`                                                               | Saves your list and closes the app.                       |
 
 ## Exiting Fish
-When you are done, enter `bye`. Fish will thank you (`Merci Au Revoir~`) and close the window after saving your task list.
+When you are done, enter `bye`. Fish will miss you (`See you nexr timeee`) and close the window after saving your task list.

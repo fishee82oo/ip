@@ -14,6 +14,7 @@ public class Fish {
     private final Storage storage;
     private final TaskList tasks;
     private final BufferingUi ui = new BufferingUi();
+    private boolean exitRequested;
 
     /**
      * Creates a Fish instance with data stored at {@code data/tasks.txt}.
@@ -46,18 +47,24 @@ public class Fish {
      * @return response string to be shown to the user
      */
     public String getResponse(String input) {
+        Command c = null;
         try {
-            Command c = Parser.parse(input, tasks);
+            c = Parser.parse(input, tasks);
             c.execute(tasks, ui, storage);
         } catch (FishException e) {
             ui.showError(e.getMessage());
         }
+        exitRequested = c != null && c.isExit();
         return ui.flush();
     }
 
     public String getGreeting() {
         ui.showWelcome();
         return ui.flush();
+    }
+
+    public boolean isExitRequested() {
+        return exitRequested;
     }
 
 }
