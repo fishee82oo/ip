@@ -1,6 +1,8 @@
 package fish.command;
 
+import fish.FishException;
 import fish.storage.Storage;
+import fish.task.Task;
 import fish.task.TaskList;
 import fish.ui.Ui;
 
@@ -28,9 +30,13 @@ public class UnmarkCommand extends Command {
      * @param storage Records the change.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        tasks.get(idx).markAsUndone();
-        ui.printIn("Undo" + tasks.get(idx) + ", remember to complete it soon~");
+    public void execute(TaskList tasks, Ui ui, Storage storage) throws FishException {
+        Task task = tasks.get(idx);
+        if (!task.isDone()) {
+            throw new FishException("You cannot unmark this task because it has not been completed!");
+        }
+        task.markAsUndone();
+        ui.printIn("Undo" + task + ", remember to complete it soon ~");
         storage.save(tasks.getTasks());
     }
 }
